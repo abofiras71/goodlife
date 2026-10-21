@@ -147,9 +147,48 @@ section h2[role=button]{cursor:pointer}
 #ibyes{background:var(--g2);color:#fff;font-weight:700}
 #ibno{background:none;color:var(--mute)}
 .ibar[hidden]{display:none}
+.excard{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:8px 14px;margin-bottom:10px;font-size:14px;line-height:1.8}
+.excard.on{border-color:var(--g2);padding:10px 14px}
+.excard b{color:var(--g);display:block}
+.exbtn{width:100%;background:none;border:0;font:inherit;font-size:14px;color:var(--g);font-weight:700;cursor:pointer;padding:2px 0;text-align:center}
+.exr{display:flex;gap:8px;margin-top:6px;flex-wrap:wrap}
+
+.layout{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr);gap:0}
+.tabs{display:flex;gap:6px;position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding:8px 14px}
+.tabs button{flex:1;font:inherit;font-size:13px;font-weight:700;border:1px solid var(--line);background:var(--card);color:var(--mute);border-radius:10px;padding:9px 4px;cursor:pointer}
+.tabs button.on{background:var(--g2);color:#fff;border-color:var(--g2)}
+.side{display:none;padding:12px 14px 40px}
+.layout[data-tab=quran] .side-quran,.layout[data-tab=learn] .side-learn{display:block}
+.layout[data-tab=quran] main,.layout[data-tab=learn] main{display:none}
+.scard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:10px}
+.scard h2,.scard h3{margin:0 0 6px;font-size:16px;color:var(--g)}
+.soon{display:inline-block;background:var(--soft);color:var(--g);border-radius:999px;padding:2px 10px;font-size:12px;font-weight:700}
+.scard p{margin:8px 0 0;font-size:14px;color:var(--mute);line-height:1.8}
+.shead2 h2{margin:6px 0 4px;font-size:18px;color:var(--g)}
+.shead2 p{margin:0 0 12px;font-size:13px;color:var(--mute);line-height:1.8}
+.ver{font-size:11px;color:var(--mute);text-align:center;margin-top:8px}
+@media (min-width:980px){
+  .layout{grid-template-columns:300px minmax(0,560px) 300px;justify-content:center;align-items:start;gap:16px;padding:0 12px}
+  .tabs{display:none}
+  .side{display:block!important;position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto;padding:16px 4px 24px}
+  .layout main{display:block!important}
+}
 </style>
 </head>
 <body>
+<div class="layout" id="layout" data-tab="center">
+<nav class="tabs" id="tabs" aria-label="أقسام الصفحة">
+<button id="tQ">القرآن الكريم</button>
+<button id="tC" class="on">الجدول</button>
+<button id="tL">علم ينتفع به</button>
+</nav>
+<aside class="side side-quran" aria-label="القرآن الكريم">
+<div class="scard">
+<h2>القرآن الكريم</h2>
+<span class="soon">قريباً بإذن الله</span>
+<p>سنضع هنا المصحف كاملاً للقراءة والتدبر، ليكون القرآن بجانبك وأنت تعمل بجدولك.</p>
+</div>
+</aside>
 <main>
 <div class="ibar" id="ibar" hidden><span>ثبّت التطبيق على شاشة جهازك ليسهل الرجوع إليه</span><button id="ibyes">تثبيت</button><button id="ibno" aria-label="إغلاق">✕</button></div>
 <h1>هندسة الحياة الطيبة</h1>
@@ -191,6 +230,7 @@ section h2[role=button]{cursor:pointer}
 <button class="btn wide bld" id="build">⚙ خصّص جدولك (خفّف أو أضف)</button>
 <div class="hint" id="hint" hidden>جدولك الآن فيه الفرائض فقط. اضغط «خصّص جدولك» لتختار ما يناسبك، وابدأ بالقليل الدائم؛ فأحب العمل إلى الله أدومه وإن قل.</div>
 <div class="hint" id="gcard" hidden>أنا: <button class="tg" id="gm">رجل</button> <button class="tg" id="gf">امرأة</button> <small>(لتظهر لك الأعمال المناسبة، وتغيّره لاحقاً من «خصّص جدولك»)</small></div>
+<div class="excard" id="excard" hidden></div>
 
 <div class="mirror" id="mirror"></div>
 <div class="mirror" id="mirror2"></div>
@@ -203,12 +243,24 @@ section h2[role=button]{cursor:pointer}
 
 <p class="hadith">سُئل النبي ﷺ: أي العمل أحب إلى الله؟ قال: أدومه وإن قل</p>
 <details class="more"><summary>المزيد</summary><div class="foot"><button class="btn alt" id="ibtn">⬇ تثبيت التطبيق على الشاشة</button>
+<button class="btn alt" id="forceUpd">↻ تحديث إلى أحدث نسخة</button>
 <button class="btn alt" id="backup">حفظ نسخة احتياطية</button>
 <button class="btn alt" id="restore">استرجاع نسخة</button>
 <input type="file" id="rfile" accept=".json,application/json" hidden>
 <button class="btn alt" id="about">عن الفكرة</button>
-<button class="btn alt" id="reset">مسح كل البيانات</button></div></details>
+<button class="btn alt" id="reset">مسح كل البيانات</button></div><div class="ver" id="ver"></div></details>
 </main>
+<aside class="side side-learn" aria-label="علم ينتفع به">
+<div class="shead2">
+<h2>علم ينتفع به</h2>
+<p>أمور لا بد للمسلم أن يتعلمها ليعبد الله على بصيرة. نبدأ بأركان الدين، ثم نضيف بقية الأبواب بالترتيب بإذن الله.</p>
+</div>
+<div class="scard"><h3>أركان الإسلام والإيمان والإحسان</h3><span class="soon">قريباً بإذن الله</span></div>
+<div class="scard"><h3>الصلوات الخمس والطهارة</h3><span class="soon">قريباً بإذن الله</span></div>
+<div class="scard"><h3>الصيام وأحكامه</h3><span class="soon">قريباً بإذن الله</span></div>
+<div class="scard"><h3>الزكاة</h3><span class="soon">قريباً بإذن الله</span></div>
+</aside>
+</div>
 
 <div class="sheet" id="sheet" hidden>
 <div class="spanel" id="spanel" role="dialog" aria-modal="true" aria-labelledby="stitle">
@@ -469,6 +521,7 @@ function openSheet(it){
   secBlock(b,'الفضل',inf.f);
   secBlock(b,inf.wt||'صفاته',inf.w);
   secBlock(b,'الطريقة',inf.m);
+  if(it.id==='w0'&&S.gender==='f'&&inExcuse(cur))secBlock(b,'في فترة العذر','يجوز لكِ القراءة حفظاً أو من الجوال، ولا تمسّي المصحف مباشرة.');
   if(isLeave(it.id))secBlock(b,'إن زللت',SLIP);
   if(inf.ad)renderAdhkar(b,inf.ad);
   secBlock(b,'المصدر',inf.s);
@@ -736,10 +789,11 @@ function parse(k){var p=k.split('-');return new Date(+p[0],+p[1]-1,+p[2]);}
 function shift(k,n){var d=parse(k);d.setDate(d.getDate()+n);return key(d);}
 
 function allItems(k){
-  var out=[],star=(k==='*'),fri=(!star&&k&&S.gender!=='f'&&isFri(k));
+  var out=[],star=(k==='*'),fri=(!star&&k&&S.gender!=='f'&&isFri(k)),exOn=(!star&&k&&S.gender==='f'&&inExcuse(k));
   function add(x,g,extra){
     if(!star){
       if(x.only&&x.only!==S.gender)return;
+      if(exOn&&(FARDSET[x.id]||EXC_HIDE[x.id]))return;
       if(!extra&&!FARDSET[x.id]&&!(S.sel&&S.sel[x.id]))return;
       if(k&&x.when&&!x.when(k))return;
     }
@@ -754,6 +808,7 @@ function allItems(k){
     (AFTER[id]||[]).forEach(function(x){add(x,g.id);});
   });});
   S.custom.forEach(function(c){add({id:c.id,t:c.t},c.g,true);});
+  if(exOn)EX_ITEMS.forEach(function(x){out.push({id:x.id,g:'w',t:x.t});});
   return out;
 }
 function allBuiltinIds(){return allItems('*').filter(function(i){return !i.custom&&!FARDSET[i.id];}).map(function(i){return i.id;});}
@@ -777,7 +832,7 @@ function applyPreset(kind){
 }
 function selCount(){return Object.keys(S.sel||{}).length;}
 function doneSet(k){return S.done[k]||[];}
-function validIds(){var m={};allItems('*').forEach(function(i){m[i.id]=1;});return m;}
+function validIds(){var m={};allItems('*').forEach(function(i){m[i.id]=1;});EX_ITEMS.forEach(function(x){m[x.id]=1;});return m;}
 function xMap(){var m={};allItems('*').forEach(function(i){if(i.g==='x')m[i.id]=1;});return m;}
 function dayCount(k){var v=validIds(),x=xMap();return doneSet(k).filter(function(id){return v[id]&&!x[id];}).length;}
 function dayPct(k){var n=allItems(k).filter(function(i){return i.g!=='x';}).length;return n?dayCount(k)/n:0;}
@@ -824,6 +879,7 @@ function render(){
   document.getElementById('fill').style.width=pct+'%';
   document.getElementById('hint').hidden=selCount()>0;
   document.getElementById('gcard').hidden=!!S.gender;
+  renderExcuse();
   buildMirror();
   var xs=items.filter(function(i){return i.g==='x';}),xd=xs.filter(function(i){return done.indexOf(i.id)>-1;}).length;
   document.getElementById('blabel').textContent='أنجزت '+c+' من '+tot+(xs.length?'  •  سلمتُ من '+xd+' من '+xs.length+' عادات أجاهدها':'');
@@ -995,7 +1051,7 @@ function tick(){
   nx.today.list.forEach(function(x){
     if(x.k==='sunrise')return;
     var at=x.ts-PS.lead*60000,key=nx.today.key+x.k+PS.lead;
-    if(now>=at&&now-at<120000&&!fired.keys[key]){fired.keys[key]=1;saveF();fireAlert(x,PS.lead,key);}
+    if(now>=at&&now-at<120000&&!fired.keys[key]&&!(S.gender==='f'&&inExcuse(nx.today.key))){fired.keys[key]=1;saveF();fireAlert(x,PS.lead,key);}
   });
 }
 function notifLabel(){
@@ -1043,7 +1099,6 @@ function initPrayer(){
   document.getElementById('bclose').addEventListener('click',function(){document.getElementById('banner').hidden=true;});
   document.addEventListener('visibilitychange',tick);
   notifLabel();
-  if(!PS.city)document.getElementById('pdet').open=true;
   tick();setInterval(tick,1000);
 }
 
@@ -1077,7 +1132,7 @@ document.getElementById('gm').addEventListener('click',function(){S.gender='m';s
 document.getElementById('gf').addEventListener('click',function(){S.gender='f';save();render();});
 (function(){
   var n=document.getElementById('pnext'),pt=document.getElementById('pt');
-  function tg(){var o=pt.className.indexOf('open')>-1;pt.className=o?'pt':'pt open';n.setAttribute('aria-expanded',o?'false':'true');}
+  function tg(){if(!PS.city)document.getElementById('pdet').open=true;var o=pt.className.indexOf('open')>-1;pt.className=o?'pt':'pt open';n.setAttribute('aria-expanded',o?'false':'true');}
   n.addEventListener('click',tg);
   n.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();tg();}});
 })();
@@ -1121,9 +1176,98 @@ document.getElementById('ibtn').addEventListener('click',doInstall);
 document.getElementById('ibno').addEventListener('click',function(){try{localStorage.setItem(IKEY,'1');}catch(e){}updateInstallUI();});
 try{
   if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol)){
-    window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});
+    var hadCtl=!!navigator.serviceWorker.controller;
+    navigator.serviceWorker.addEventListener('controllerchange',function(){if(hadCtl&&!window.__swr){window.__swr=1;location.reload();}});
+    window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').then(function(r){try{r.update();}catch(e){}}).catch(function(){});});
   }
 }catch(e){}
+
+/* ===== وضع العذر الشرعي (حيض أو نفاس) للنساء ===== */
+var EXC_HIDE={p0:1,p2:1,p4:1,p5:1,p5b:1,p7:1,p11:1,p13:1,p14:1,p_post:1,p_fast:1,p_bid:1,p_jumua:1,w_kahf:1};
+var EX_ITEMS=[
+{id:'e_dhikr',t:'الإكثار من ذكر الله (خير أعمالك في هذه الأيام)'},
+{id:'e_listen',t:'الاستماع إلى القرآن وتدبره'},
+{id:'e_ilm',t:'تعلّم حكم من أحكام الطهارة والعبادة'},
+{id:'e_move',t:'حركة خفيفة وعناية بالنفس'}
+];
+SETS.edhikr=SETS.w4.concat(SETS.w3,SETS.w2,SETS.w5,SETS.w6);
+INFO.e_dhikr={ad:'edhikr',f:'قال ﷺ: «ألا أنبئكم بخير أعمالكم، وأزكاها عند مليككم، وأرفعها في درجاتكم، وخير لكم من إنفاق الذهب والورق، وخير لكم من أن تلقوا عدوكم فتضربوا أعناقهم ويضربوا أعناقكم؟» قالوا: بلى. قال: «ذكر الله تعالى». وقال تعالى: ﴿وَالذَّاكِرِينَ اللَّهَ كَثِيرًا وَالذَّاكِرَاتِ أَعَدَّ اللَّهُ لَهُم مَّغْفِرَةً وَأَجْرًا عَظِيمًا﴾.',m:'اجعلي لسانك رطباً بذكر الله في كل حال، وأنتِ تعملين أو تمشين أو تجلسين: التسبيح والتحميد والتكبير، والاستغفار، والصلاة على النبي ﷺ، والحوقلة. وأذكار الصباح والمساء والنوم باقية في جدولك. وأدناه الأذكار كاملة مع عدّاداتها.',s:'رواه الترمذي وابن ماجه وصححه الألباني، والآية في سورة الأحزاب (35)'};
+INFO.e_listen={f:'قال تعالى: ﴿وَإِذَا قُرِئَ الْقُرْآنُ فَاسْتَمِعُوا لَهُ وَأَنصِتُوا لَعَلَّكُمْ تُرْحَمُونَ﴾.',m:'استمعي إلى تلاوة خاشعة أو إلى تفسير ميسّر، وتأملي المعاني، ودوّني فائدة واحدة كل يوم. ويجوز لكِ أن تقرئي القرآن حفظاً أو من الجوال، والممنوع مسّ المصحف مباشرة.',s:'سورة الأعراف (204)'};
+INFO.e_ilm={f:'قالت عائشة رضي الله عنها: «نعم النساء نساء الأنصار، لم يمنعهن الحياء أن يتفقهن في الدين».',m:'اقرئي كل يوم حكماً من أحكام الطهارة والحيض والنفاس من كتاب أو موقع موثوق، ودوّني ما أشكل عليك لتسألي عنه أهل العلم. فالعلم النافع من أعظم ما يُستثمر فيه الوقت.',s:'رواه مسلم'};
+INFO.e_move={f:'قال ﷺ: «المؤمن القوي خير وأحب إلى الله من المؤمن الضعيف، وفي كل خير». وقال: «إن لجسدك عليك حقاً».',m:'امشي أو مارسي تمارين تمدد خفيفة نحو 15 إلى 20 دقيقة، واشربي الماء، وخذي قسطاً كافياً من النوم والراحة، وتناولي غذاءً متوازناً، واعتني بنفسك بما يريحك. وإذا اشتد الألم أو كان النزيف غير معتاد فاستشيري طبيبة.',s:'الأول رواه مسلم، والثاني رواه البخاري'};
+
+function inExcuse(k){return (S.exr||[]).some(function(r){return k>=r.from&&(!r.to||k<=r.to);});}
+function excuseActive(){var a=S.exr||[];return (a.length&&!a[a.length-1].to)?a[a.length-1]:null;}
+function renderExcuse(){
+  var c=document.getElementById('excard');c.innerHTML='';
+  if(S.gender!=='f'){c.hidden=true;return;}
+  c.hidden=false;
+  if(excuseActive()){
+    c.className='excard on';
+    c.appendChild(el('b','','أنتِ الآن في فترة العذر الشرعي'));
+    c.appendChild(el('div','','جدولك مخصّص لكِ: خُفّف منه ما يسقط عنكِ، وبقيت الأعمال التي تقدرين عليها.'));
+    var r=el('div','exr'),b1=el('button','tg','التوجيهات والأحكام'),b2=el('button','tg on','طهرتُ');
+    b1.addEventListener('click',openExcuseInfo);
+    b2.addEventListener('click',function(){if(confirm('هل انتهى العذر وطهرتِ؟'))endExcuse();});
+    r.appendChild(b1);r.appendChild(b2);c.appendChild(r);
+  }else{
+    c.className='excard';
+    var b=el('button','exbtn','لديّ عذر شرعي');
+    b.addEventListener('click',startExcuse);
+    c.appendChild(b);
+  }
+}
+function startExcuse(){
+  if(!S.exr)S.exr=[];
+  if(!excuseActive())S.exr.push({from:today(),to:null});
+  save();render();openExcuseInfo();
+}
+function endExcuse(){
+  var r=excuseActive();if(!r)return;
+  var ram=0,days=0,k=r.from,end=shift(today(),-1);
+  if(r.from===today()){S.exr.pop();}
+  else{r.to=end;while(k<=end&&days<90){days++;var hj=hijri(k);if(hj&&hj.month===9)ram++;k=shift(k,1);}}
+  save();render();
+  var P=['الحمد لله على طهرك. اغتسلي بنية رفع الحدث، ثم صلّي ما حضر وقته، ولا تقضي الصلوات الفائتة في أيام العذر.'];
+  if(ram>0)P.push('من الأيام المسجّلة في التطبيق '+ram+' يوماً في رمضان، تقضينها بعد رمضان بإذن الله، فقد قالت عائشة رضي الله عنها: «كنا نؤمر بقضاء الصوم ولا نؤمر بقضاء الصلاة» (رواه مسلم). وإن لم تسجّلي كل الأيام فاحسبيها بنفسك.');
+  P.push('بارك الله لك، وتقبّل منك ما قدّمتِ من ذكر وصبر. وقد عاد جدولك كاملاً.');
+  openMsg('الحمد لله على الطهر',P);
+}
+function openExcuseInfo(){
+  document.getElementById('stitle').textContent='في فترة العذر الشرعي';
+  var b=document.getElementById('sbody');b.innerHTML='';
+  secBlock(b,'تسلية وبشرى','لا تحزني ولا تضيقي بهذه الأيام، فهي أمر كتبه الله على بنات آدم، كما قال النبي ﷺ لعائشة رضي الله عنها لما بكت: «إن هذا أمر كتبه الله على بنات آدم» (رواه البخاري). وقال ﷺ: «ما يصيب المسلم من نصب ولا وصب ولا هم ولا حزن ولا أذى ولا غم، حتى الشوكة يشاكها، إلا كفّر الله بها من خطاياه» (متفق عليه). فما تجدينه من تعب أو ألم فاصبري واحتسبي، وأبشري بإذن الله بتكفير الخطايا ورفع الدرجات.');
+  secBlock(b,'ما يسقط عنكِ','تسقط عنكِ الصلاة ولا تُقضى، ويسقط عنكِ الصيام ويُقضى بعد رمضان، فقد قالت عائشة رضي الله عنها: «كنا نؤمر بقضاء الصوم ولا نؤمر بقضاء الصلاة» (رواه مسلم). ولا تطوفين بالبيت، وتحرم المعاشرة الزوجية. وهذا تخفيف ورحمة من الله، وفيه طاعة له سبحانه، فأنتِ مأجورة على امتثالك أمره.');
+  secBlock(b,'وماذا تفعلين؟ أفضل الأعمال الذكر','أبواب الخير مفتوحة لكِ، فقد قال ﷺ لعائشة وهي حائض: «افعلي ما يفعل الحاج غير ألا تطوفي بالبيت حتى تطهري» (متفق عليه). ومن أعظم الأعمال ذكر الله، قال ﷺ: «ألا أنبئكم بخير أعمالكم، وأزكاها عند مليككم، وأرفعها في درجاتكم، وخير لكم من إنفاق الذهب والورق، وخير لكم من أن تلقوا عدوكم فتضربوا أعناقهم ويضربوا أعناقكم؟» قالوا: بلى. قال: «ذكر الله تعالى» (رواه الترمذي وابن ماجه وصححه الألباني). وقال تعالى: ﴿وَالذَّاكِرِينَ اللَّهَ كَثِيرًا وَالذَّاكِرَاتِ أَعَدَّ اللَّهُ لَهُم مَّغْفِرَةً وَأَجْرًا عَظِيمًا﴾. فأكثري من الذكر والاستغفار والصلاة على النبي ﷺ والدعاء، وأذكار الصباح والمساء والنوم، واقرئي القرآن حفظاً أو من الجوال دون مسّ المصحف، واستمعي إليه وتدبريه، واحضري مجالس العلم، فقد كانت النساء، ومنهن الحُيّض، يشهدن الخير ودعوة المسلمين في العيدين (متفق عليه).');
+  secBlock(b,'ما يعينك على أيام أفضل','حركة خفيفة كالمشي أو التمدد (15 إلى 20 دقيقة)، وشرب الماء، والنوم الكافي، وغذاء متوازن، وتنظيم يومك، وقراءة كتاب نافع، وتعلّم حكم من أحكام الطهارة. فقد قالت عائشة رضي الله عنها: «نعم النساء نساء الأنصار، لم يمنعهن الحياء أن يتفقهن في الدين» (رواه مسلم). وإذا اشتد الألم أو كان النزيف غير معتاد فاستشيري طبيبة.');
+  secBlock(b,'تنبيهات','قراءة القرآن: يجوز لكِ بإذن الله أن تقرئي حفظاً أو من الجوال، والممنوع مسّ المصحف مباشرة، وهذا قول طائفة من أهل العلم كالمالكية وشيخ الإسلام ابن تيمية. وللعلماء في المسألة خلاف، فاسألي أهل العلم الموثوقين إن أردتِ التفصيل. أما الاستماع والتدبر فمباح باتفاق. والاستحاضة (دم يستمر غير الحيض) تصلين معه، فإن اختلط عليك الأمر فاسألي أهل العلم أو الطبيبة. وللنفاس أحكام الحيض نفسها، وأكثره عند جمهور العلماء أربعون يوماً. وهذه المعلومات مختصرة، فارجعي إلى أهل العلم فيما أشكل.');
+  secBlock(b,'حين تطهرين','إذا رأيتِ الطهر وانقطع الدم فاغتسلي وصلّي، ولا تقضي الصلوات الفائتة، واقضي ما فاتك من صيام رمضان. ثم اضغطي «طهرتُ» ليعود جدولك كاملاً.');
+  document.getElementById('smark').style.display='none';
+  document.getElementById('snote').style.display='none';
+  document.getElementById('sheet').hidden=false;
+  document.getElementById('spanel').scrollTop=0;
+  document.getElementById('sclose').focus();
+}
+
+var APP_VERSION='2026.10.21-b2';
+function setTab(t){
+  document.getElementById('layout').setAttribute('data-tab',t);
+  [['tQ','quran'],['tC','center'],['tL','learn']].forEach(function(x){document.getElementById(x[0]).className=(x[1]===t)?'on':'';});
+  try{window.scrollTo(0,0);}catch(e){}
+}
+document.getElementById('tQ').addEventListener('click',function(){setTab('quran');});
+document.getElementById('tC').addEventListener('click',function(){setTab('center');});
+document.getElementById('tL').addEventListener('click',function(){setTab('learn');});
+document.getElementById('ver').textContent='الإصدار: '+APP_VERSION+' • التحديث لا يحذف بياناتك';
+document.getElementById('forceUpd').addEventListener('click',function(){
+  var go=function(){location.replace(location.pathname+'?v='+Date.now());};
+  try{
+    var jobs=[];
+    if(navigator.serviceWorker&&navigator.serviceWorker.getRegistrations)jobs.push(navigator.serviceWorker.getRegistrations().then(function(rs){return Promise.all(rs.map(function(r){return r.unregister();}));}));
+    if(window.caches&&caches.keys)jobs.push(caches.keys().then(function(ks){return Promise.all(ks.map(function(k){return caches.delete(k);}));}));
+    Promise.all(jobs).then(go,go);
+  }catch(e){go();}
+});
 
 load();ensureSel();render();initPrayer();updateInstallUI();
 </script>
