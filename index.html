@@ -5,18 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>هندسة الحياة الطيبة</title>
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#0f4c3a">
+<meta name="theme-color" content="#ffffff">
+<meta name="color-scheme" content="light">
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="الحياة الطيبة">
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Amiri:wght@400;700&family=Amiri+Quran&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f2f6f3;--card:#fff;--ink:#17261f;--mute:#5d6f66;--line:#dde7e1;--g:#0f4c3a;--g2:#1d7a5a;--gold:#b98b24;--soft:#e4f1ea;
+:root{--bg:#ffffff;--card:#ffffff;--ink:#1b2a3a;--mute:#5a6f86;--line:#c4dff5;--g:#17538f;--g2:#2373bd;--gold:#1578b5;--sky:#4aa8e8;--soft:#eaf4fd;color-scheme:light;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1714;--card:#16231d;--ink:#e8f1ec;--mute:#93a79c;--line:#26382f;--g:#4fc396;--g2:#2f9b75;--gold:#e0b34a;--soft:#1c3128}}
-:root[data-theme="dark"]{--bg:#0e1714;--card:#16231d;--ink:#e8f1ec;--mute:#93a79c;--line:#26382f;--g:#4fc396;--g2:#2f9b75;--gold:#e0b34a;--soft:#1c3128}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:'Tajawal',system-ui,'Segoe UI',Tahoma,sans-serif;line-height:1.6}
 main{max-width:560px;margin:0 auto;padding:16px 14px 40px}
@@ -32,7 +31,7 @@ h1{font-size:26px;font-weight:800;margin:6px 0 2px;color:var(--g)}
 .stat b{display:block;font-size:22px;color:var(--g)}
 .stat span{font-size:12px;color:var(--mute)}
 .bar{height:10px;background:var(--line);border-radius:6px;overflow:hidden;margin:0 0 4px}
-.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--g2),var(--gold));width:0;transition:width .3s}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--g2),var(--sky));width:0;transition:width .3s}
 .barlabel{font-size:13px;color:var(--mute);margin-bottom:14px}
 section{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:14px;overflow:hidden}
 section h2{margin:0;padding:11px 14px;font-size:16px;font-weight:700;background:var(--soft);color:var(--g);display:flex;justify-content:space-between}
@@ -91,7 +90,7 @@ label.item.on span.t{color:var(--mute);text-decoration:line-through}
 .pset button{font:inherit;font-weight:700;border:0;border-radius:10px;padding:10px;background:var(--g2);color:#fff;cursor:pointer}
 .pset button.sec{background:var(--soft);color:var(--g)}
 .pset small{color:var(--mute);line-height:1.7}
-.banner{position:fixed;left:12px;right:12px;top:calc(12px + env(safe-area-inset-top,0px));z-index:30;background:#0f4c3a;color:#fff;border-radius:14px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px;box-shadow:0 6px 20px rgba(0,0,0,.3);font-weight:700}
+.banner{position:fixed;left:12px;right:12px;top:calc(12px + env(safe-area-inset-top,0px));z-index:30;background:#17538f;color:#fff;border-radius:14px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px;box-shadow:0 6px 20px rgba(0,0,0,.3);font-weight:700}
 .banner[hidden]{display:none}
 .banner button{background:rgba(255,255,255,.2);color:#fff;border:0;border-radius:8px;padding:6px 12px;font:inherit;cursor:pointer}
 .sec p+p{margin-top:8px}
@@ -173,6 +172,28 @@ section h2[role=button]{cursor:pointer}
   .side{display:block!important;position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto;padding:16px 4px 24px}
   .layout main{display:block!important}
 }
+.more-soon{font-size:13px;color:var(--mute);text-align:center;margin:6px 0 0}
+.kcard{display:block;width:100%;text-align:right;font:inherit;color:inherit;cursor:pointer;margin-bottom:10px}
+.kcard:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.soon.on{background:var(--g2);color:#fff}
+
+.q{font-family:'Amiri Quran','Scheherazade New','Noto Naskh Arabic','Traditional Arabic',serif;font-size:1.25em;line-height:2.3;color:var(--ink)}
+.hd{font-family:'Amiri','Noto Naskh Arabic','Traditional Arabic',serif;font-size:1.12em;line-height:2.1;color:var(--ink)}
+.acard p{white-space:pre-line}
+.acard p.q{font-family:'Amiri Quran','Scheherazade New','Noto Naskh Arabic',serif;font-size:23px;line-height:2.5}
+.acard p.hd{font-family:'Amiri','Noto Naskh Arabic',serif;font-size:20px;line-height:2.3}
+.mirror .ma .q{font-size:1.15em}
+
+section,.scard,.stat,.pt,.mirror,.acard,.excard,.hint,.crow{box-shadow:0 1px 4px rgba(35,115,189,.10)}
+.pt,.mirror{border-color:#9ecbf1}
+.mirror{border-right-color:var(--sky)}
+section{border-color:#9ecbf1}
+section h2{background:linear-gradient(90deg,#eaf4fd,#dff0fc)}
+.stat{border-color:#b5d8f4}
+.slogan{display:block;width:100%;text-align:center;background:linear-gradient(180deg,#f6fbff,#eaf4fd);border:1px solid #9ecbf1;border-radius:14px;padding:8px 12px;margin:0 0 10px;font:inherit;color:var(--g);cursor:pointer;box-shadow:0 1px 4px rgba(35,115,189,.10)}
+.slogan .hd{display:block;font-size:17px;line-height:2;font-weight:700}
+.slogan small{display:block;font-size:11px;color:var(--mute);margin-top:2px}
+.slogan:focus-visible{outline:3px solid var(--sky);outline-offset:2px}
 </style>
 </head>
 <body>
@@ -192,7 +213,7 @@ section h2[role=button]{cursor:pointer}
 <main>
 <div class="ibar" id="ibar" hidden><span>ثبّت التطبيق على شاشة جهازك ليسهل الرجوع إليه</span><button id="ibyes">تثبيت</button><button id="ibno" aria-label="إغلاق">✕</button></div>
 <h1>هندسة الحياة الطيبة</h1>
-<p class="sub">رفيقك اليومي لأداء الصلاة والسنن والعادات الحسنة، لنيل حياة طيبة</p>
+<button class="slogan" id="slogan" aria-label="شعار التطبيق وشرحه"><span class="hd">«مَنْ خَافَ أَدْلَجَ، وَمَنْ أَدْلَجَ بَلَغَ الْمَنْزِلَ، أَلَا إِنَّ سِلْعَةَ اللَّهِ غَالِيَةٌ، أَلَا إِنَّ سِلْعَةَ اللَّهِ الْجَنَّةُ»</span><small>اضغط لقراءة شرح الحديث ورسالة لك</small></button>
 
 <div class="pt" id="pt">
 <div class="next" id="pnext" role="button" tabindex="0" aria-expanded="false"><span class="nn" id="pnName">اختر مدينتك لعرض المواقيت</span><span class="cd" id="pnCd"></span><span class="arr" aria-hidden="true">▾</span></div>
@@ -255,10 +276,12 @@ section h2[role=button]{cursor:pointer}
 <h2>علم ينتفع به</h2>
 <p>أمور لا بد للمسلم أن يتعلمها ليعبد الله على بصيرة. نبدأ بأركان الدين، ثم نضيف بقية الأبواب بالترتيب بإذن الله.</p>
 </div>
-<div class="scard"><h3>أركان الإسلام والإيمان والإحسان</h3><span class="soon">قريباً بإذن الله</span></div>
-<div class="scard"><h3>الصلوات الخمس والطهارة</h3><span class="soon">قريباً بإذن الله</span></div>
+<button class="scard kcard" id="kArkan"><h3>أركان الإسلام والإيمان والإحسان</h3><span class="soon on">اضغط للقراءة</span></button>
+<button class="scard kcard" id="kSalah"><h3>الصلوات الخمس والطهارة</h3><span class="soon on">اضغط للقراءة</span></button>
 <div class="scard"><h3>الصيام وأحكامه</h3><span class="soon">قريباً بإذن الله</span></div>
 <div class="scard"><h3>الزكاة</h3><span class="soon">قريباً بإذن الله</span></div>
+<div class="scard"><h3>الحج والعمرة</h3><span class="soon">قريباً بإذن الله</span></div>
+<p class="more-soon">وبقية الأبواب تُضاف تباعاً بإذن الله.</p>
 </aside>
 </div>
 
@@ -491,7 +514,16 @@ SETS.w4=[{t:'الباقيات الصالحات',n:10,m:'سُبْحَانَ ال�
 SETS.w5=[{t:'الحوقلة',n:10,m:'لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ',f:'قال ﷺ: «ألا أدلك على كنز من كنوز الجنة؟ لا حول ولا قوة إلا بالله».',s:'متفق عليه'}];
 SETS.w6=[{t:'سبحان الله عدد خلقه',n:3,m:'سُبْحَانَ اللَّهِ وَبِحَمْدِهِ، عَدَدَ خَلْقِهِ، وَرِضَا نَفْسِهِ، وَزِنَةَ عَرْشِهِ، وَمِدَادَ كَلِمَاتِهِ',f:'قال ﷺ لجويرية رضي الله عنها: «لقد قلتُ بعدك أربع كلمات، ثلاث مرات، لو وزنت بما قلتِ منذ اليوم لوزنتهن».',s:'رواه مسلم'}];
 ['w1','w2','w3','w4','w5','w6'].forEach(function(k){INFO[k].ad=k;});
-function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!==undefined)e.textContent=txt;return e;}
+function richFill(e,txt){
+  var re=/(﴿[^﴾]*﴾|«[^»]{25,}»)/g,last=0,m;
+  while((m=re.exec(txt))){
+    if(m.index>last)e.appendChild(document.createTextNode(txt.slice(last,m.index)));
+    var s=document.createElement('span');s.className=(m[0].charAt(0)==='﴿')?'q':'hd';s.textContent=m[0];e.appendChild(s);
+    last=m.index+m[0].length;
+  }
+  if(last<txt.length)e.appendChild(document.createTextNode(txt.slice(last)));
+}
+function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!==undefined){if(/[﴿«]/.test(String(txt)))richFill(e,String(txt));else e.textContent=txt;}return e;}
 function secBlock(parent,title,text){
   if(!text)return;
   var s=el('div','sec');s.appendChild(el('h3','',title));s.appendChild(el('p','',text));parent.appendChild(s);
@@ -502,7 +534,8 @@ function renderAdhkar(parent,mode){
     var left=a.n;
     var c=el('div','acard');
     c.appendChild(el('div','at',a.t));
-    c.appendChild(el('p','',(mode==='e'&&a.e)?a.e:a.m));
+    var isQ=/آية الكرسي|الإخلاص والمعوذتان|آخر آيتين|آيات آل عمران/.test(a.t);
+    c.appendChild(el('p',isQ?'q':'hd',(mode==='e'&&a.e)?a.e:a.m));
     c.appendChild(el('small','',a.f+' — '+a.s));
     var b=el('button','cnt','اضغط للعد: '+left+(a.n>1?' مرة':''));
     b.addEventListener('click',function(){
@@ -538,7 +571,8 @@ function openAbout(){
   document.getElementById('stitle').textContent='عن الفكرة';
   var b=document.getElementById('sbody');b.innerHTML='';
   var s=el('div','sec');
-  ['هذا نموذج تجريبي لتطبيق «هندسة الحياة الطيبة»، فكرته أن يكون رفيقك اليومي على المحافظة على الفرائض والسنن، وبناء عادات حسنة، واتباع هدي النبي ﷺ.',
+  ['شعار التطبيق قول النبي ﷺ: «مَنْ خَافَ أَدْلَجَ، وَمَنْ أَدْلَجَ بَلَغَ الْمَنْزِلَ، أَلَا إِنَّ سِلْعَةَ اللَّهِ غَالِيَةٌ، أَلَا إِنَّ سِلْعَةَ اللَّهِ الْجَنَّةُ»، وهو رفيقك اليومي لأداء الصلاة والسنن والعادات الحسنة لنيل حياة طيبة.',
+   'هذا نموذج تجريبي لتطبيق «هندسة الحياة الطيبة»، فكرته أن يكون رفيقك اليومي على المحافظة على الفرائض والسنن، وبناء عادات حسنة، واتباع هدي النبي ﷺ.',
    'يتضمن جدولاً يومياً للصلوات والسنن والأوراد والعادات، مع ذكر فضائل هذه الأعمال من القرآن والسنة، وأذكار اليوم والليلة، ومواقيت الصلاة، ومحاسبة أسبوعية للنفس.',
    'الجدول يبدأ كاملاً بكل الأعمال: الصلوات الخمس ثابتة، ويمكنك أن تخفف منه بما يناسبك أو تضيف عادات خاصة بك، ولكل عمل فضله وطريقته.',
    'ولا نبني العادات الحسنة فقط، بل نجاهد النفس على ترك العادات السيئة، مع تذكير يومي بصفات الإنسان في القرآن ومعالجتها، وتواضع إذا وُفّق العبد، وتوبة إذا زلّ.',
@@ -1249,7 +1283,7 @@ function openExcuseInfo(){
   document.getElementById('sclose').focus();
 }
 
-var APP_VERSION='2026.10.21-b2';
+var APP_VERSION='2026.10.21-b4';
 function setTab(t){
   document.getElementById('layout').setAttribute('data-tab',t);
   [['tQ','quran'],['tC','center'],['tL','learn']].forEach(function(x){document.getElementById(x[0]).className=(x[1]===t)?'on':'';});
@@ -1268,6 +1302,142 @@ document.getElementById('forceUpd').addEventListener('click',function(){
     Promise.all(jobs).then(go,go);
   }catch(e){go();}
 });
+
+function openArkan(){
+  document.getElementById('stitle').textContent='أركان الإسلام والإيمان والإحسان';
+  var b=document.getElementById('sbody');b.innerHTML='';
+  function sec(title,paras){var s=el('div','sec');s.appendChild(el('h3','',title));paras.forEach(function(t){s.appendChild(el('p','',t));});b.appendChild(s);}
+  sec('حديث جبريل عليه السلام',[
+    'عن عمر بن الخطاب رضي الله عنه قال: «بينما نحن جلوس عند رسول الله ﷺ ذات يوم، إذ طلع علينا رجل شديد بياض الثياب، شديد سواد الشعر، لا يُرى عليه أثر السفر، ولا يعرفه منا أحد، حتى جلس إلى النبي ﷺ، فأسند ركبتيه إلى ركبتيه، ووضع كفيه على فخذيه، وقال: يا محمد، أخبرني عن الإسلام.',
+    'فقال رسول الله ﷺ: «الإسلام أن تشهد أن لا إله إلا الله وأن محمداً رسول الله، وتقيم الصلاة، وتؤتي الزكاة، وتصوم رمضان، وتحج البيت إن استطعت إليه سبيلاً». قال: صدقت. فعجبنا له يسأله ويصدّقه.',
+    'قال: فأخبرني عن الإيمان. قال: «أن تؤمن بالله، وملائكته، وكتبه، ورسله، واليوم الآخر، وتؤمن بالقدر خيره وشره». قال: صدقت.',
+    'قال: فأخبرني عن الإحسان. قال: «أن تعبد الله كأنك تراه، فإن لم تكن تراه فإنه يراك».',
+    'قال: فأخبرني عن الساعة. قال: «ما المسؤول عنها بأعلم من السائل». قال: فأخبرني عن أماراتها. قال: «أن تلد الأمة ربتها، وأن ترى الحفاة العراة العالة رعاء الشاء يتطاولون في البنيان».',
+    'ثم انطلق، فلبثت مليّاً، ثم قال لي: «يا عمر، أتدري من السائل؟» قلت: الله ورسوله أعلم. قال: «فإنه جبريل أتاكم يعلمكم دينكم».'
+  ]);
+  sec('أركان الإسلام الخمسة',[
+    'قال ﷺ: «بُني الإسلام على خمس: شهادة أن لا إله إلا الله وأن محمداً رسول الله، وإقام الصلاة، وإيتاء الزكاة، والحج، وصوم رمضان» (متفق عليه).',
+    '• الشهادتان: أن تشهد أن لا معبود بحق إلا الله وحده، وأن محمداً رسول الله، وتعمل بمقتضاهما: إخلاص العبادة لله، واتباع رسوله ﷺ.',
+    '• إقام الصلاة: أداء الصلوات الخمس في أوقاتها بأركانها وشروطها وخشوعها.',
+    '• إيتاء الزكاة: إخراج القدر الواجب من المال إلى مستحقيه، إذا بلغ النصاب وحال عليه الحول.',
+    '• صوم رمضان: الإمساك عن المفطرات من طلوع الفجر إلى غروب الشمس تعبداً لله.',
+    '• حج البيت: فرض مرة في العمر على المستطيع: ﴿وَلِلَّهِ عَلَى النَّاسِ حِجُّ الْبَيْتِ مَنِ اسْتَطَاعَ إِلَيْهِ سَبِيلًا﴾ (آل عمران 97).'
+  ]);
+  sec('أركان الإيمان الستة',[
+    'قال تعالى: ﴿آمَنَ الرَّسُولُ بِمَا أُنزِلَ إِلَيْهِ مِن رَّبِّهِ وَالْمُؤْمِنُونَ ۚ كُلٌّ آمَنَ بِاللَّهِ وَمَلَائِكَتِهِ وَكُتُبِهِ وَرُسُلِهِ﴾ (البقرة 285).',
+    '• الإيمان بالله: الإيمان بوجوده وربوبيته وألوهيته واستحقاقه العبادة وحده، وبأسمائه وصفاته.',
+    '• الإيمان بالملائكة: عباد مكرمون لا يعصون الله ما أمرهم ويفعلون ما يؤمرون.',
+    '• الإيمان بالكتب: ما أنزل الله على رسله، ومنها القرآن والتوراة والإنجيل والزبور.',
+    '• الإيمان بالرسل: أولهم نوح وآخرهم محمد ﷺ، وهو خاتم النبيين.',
+    '• الإيمان باليوم الآخر: البعث والحساب والجنة والنار، وما يسبق ذلك من فتنة القبر.',
+    '• الإيمان بالقدر خيره وشره: أن الله علم كل شيء وكتبه وشاءه وخلقه: ﴿إِنَّا كُلَّ شَيْءٍ خَلَقْنَاهُ بِقَدَرٍ﴾ (القمر 49).'
+  ]);
+  sec('الإحسان',[
+    'الإحسان أعلى مراتب الدين، وهو أن تعبد الله كأنك تراه، فإن لم تكن تراه فإنه يراك. وذكر أهل العلم أن له مرتبتين: أعلاهما أن تعبد الله كأنك تراه، والثانية أن تستحضر أن الله يراك، ومنهم من جعلهما منزلة واحدة تفسّر إحداهما الأخرى. وعرّف ابن القيم رحمه الله المراقبة بأنها دوام علم العبد ويقينه باطّلاع الله على ظاهره وباطنه (مدارج السالكين).',
+    'قال تعالى: ﴿الَّذِي يَرَاكَ حِينَ تَقُومُ * وَتَقَلُّبَكَ فِي السَّاجِدِينَ﴾ (الشعراء 218-219). وقال: ﴿هَلْ جَزَاءُ الْإِحْسَانِ إِلَّا الْإِحْسَانُ﴾ (الرحمن 60).'
+  ]);
+  sec('من فوائد الحديث',[
+    '• الدين ثلاث مراتب: الإسلام والإيمان والإحسان، وقد سمّاها النبي ﷺ كلها «دينكم».',
+    '• قاعدة عند المحققين من أهل السنة، كابن رجب وشيخ الإسلام ابن تيمية، وأفتى بها الشيخ ابن باز: الإسلام والإيمان إذا اجتمعا في نص واحد (كحديث جبريل) فالإسلام الأعمال الظاهرة والإيمان ما يتعلق بالقلب، وإذا انفرد أحدهما دخل فيه الآخر.',
+    '• ذكر ابن رجب في «جامع العلوم والحكم» أن هذا الحديث يشتمل على شرح الدين كله، ولذلك قال النبي ﷺ في آخره: «هذا جبريل أتاكم يعلمكم دينكم».',
+    '• أدب طالب العلم: الجلوس بأدب وسؤال المتعلم، وبيان العلم للناس بالسؤال والجواب.',
+    '• علم الساعة عند الله وحده: ﴿إِنَّ اللَّهَ عِندَهُ عِلْمُ السَّاعَةِ﴾ (لقمان 34).',
+    '• وجوب الإيمان بالقدر خيره وشره.'
+  ]);
+  sec('المصدر',['حديث جبريل رواه مسلم من حديث عمر بن الخطاب رضي الله عنه، وحديث «بُني الإسلام على خمس» متفق عليه من حديث ابن عمر رضي الله عنهما. ومن كلام أهل العلم: «جامع العلوم والحكم» لابن رجب (شرح الحديث الثاني)، و«مدارج السالكين» لابن القيم، وفتاوى الشيخ ابن باز.']);
+  document.getElementById('smark').style.display='none';
+  document.getElementById('snote').style.display='none';
+  document.getElementById('sheet').hidden=false;
+  document.getElementById('spanel').scrollTop=0;
+  document.getElementById('sclose').focus();
+}
+document.getElementById('kArkan').addEventListener('click',openArkan);
+
+function knowSheet(title,secs){
+  document.getElementById('stitle').textContent=title;
+  var b=document.getElementById('sbody');b.innerHTML='';
+  secs.forEach(function(s){var d=el('div','sec');d.appendChild(el('h3','',s[0]));s[1].forEach(function(t){d.appendChild(el('p','',t));});b.appendChild(d);});
+  document.getElementById('smark').style.display='none';
+  document.getElementById('snote').style.display='none';
+  document.getElementById('sheet').hidden=false;
+  document.getElementById('spanel').scrollTop=0;
+  document.getElementById('sclose').focus();
+}
+function openSalah(){
+  knowSheet('الصلوات الخمس والطهارة',[
+  ['مكانة الصلاة وأوقاتها',[
+    'قال تعالى: ﴿إِنَّ الصَّلَاةَ كَانَتْ عَلَى الْمُؤْمِنِينَ كِتَابًا مَّوْقُوتًا﴾ (النساء 103)، أي مفروضة في أوقات محددة. وفي حديث جبريل أنه صلى بالنبي ﷺ في أول الوقت ثم في آخره، وقال: «الصلاة بين هذين الوقتين».',
+    'وقال تعالى: ﴿أَقِمِ الصَّلَاةَ لِدُلُوكِ الشَّمْسِ إِلَىٰ غَسَقِ اللَّيْلِ وَقُرْآنَ الْفَجْرِ ۖ إِنَّ قُرْآنَ الْفَجْرِ كَانَ مَشْهُودًا﴾ (الإسراء 78).',
+    'وقد بيّن الشيخ ابن باز رحمه الله في تعليقه أنه لا يجوز تقديم الصلاة على وقتها ولا تأخيرها عنه بلا عذر، ويجوز للمسافر والمريض الجمع بين الظهر والعصر وبين المغرب والعشاء.'
+  ]],
+  ['شروط الصلاة التسعة',[
+    'ذكر الإمام محمد بن عبد الوهاب رحمه الله أن شروط الصلاة تسعة، وشرح الشيخ ابن باز رحمه الله ذلك. والشرط ما لا تصح الصلاة بدونه، ولا يلزم من وجوده وجود الصلاة.',
+    '• الإسلام. • العقل. • التمييز: وحدّه سبع سنين، ويؤمر الصبي بالصلاة لقوله ﷺ: «مروا أبناءكم بالصلاة لسبع».',
+    '• رفع الحدث: بالوضوء أو الغسل، وعند عدم الماء أو العجز عنه بالتيمم، لقوله ﷺ: «لا تقبل صلاة بغير طهور».',
+    '• إزالة النجاسة من البدن والثوب والبقعة: ﴿وَثِيَابَكَ فَطَهِّرْ﴾ (المدثر 4). وقال الشيخ ابن باز: من صلى بنجاسة ناسياً أو جاهلاً فصلاته صحيحة على الصحيح.',
+    '• ستر العورة: ﴿يَا بَنِي آدَمَ خُذُوا زِينَتَكُمْ عِندَ كُلِّ مَسْجِدٍ﴾ (الأعراف 31). وعورة الرجل من السرة إلى الركبة، والمرأة الحرة كلها عورة إلا وجهها في الصلاة، وفي الكفين خلاف، والأحوط سترهما، كما قال الشيخ ابن باز.',
+    '• دخول الوقت. • استقبال القبلة: ﴿فَوَلِّ وَجْهَكَ شَطْرَ الْمَسْجِدِ الْحَرَامِ ۚ وَحَيْثُ مَا كُنتُمْ فَوَلُّوا وُجُوهَكُمْ شَطْرَهُ﴾ (البقرة 144)، ويُعذر المسافر في النافلة والعاجز.',
+    '• النية: ومحلها القلب، وقال الشيخ ابن باز في تعليقه إن التلفظ بها بدعة، لقوله ﷺ: «إنما الأعمال بالنيات».'
+  ]],
+  ['الوضوء: شروطه وفروضه',[
+    'قال تعالى: ﴿يَا أَيُّهَا الَّذِينَ آمَنُوا إِذَا قُمْتُمْ إِلَى الصَّلَاةِ فَاغْسِلُوا وُجُوهَكُمْ وَأَيْدِيَكُمْ إِلَى الْمَرَافِقِ وَامْسَحُوا بِرُءُوسِكُمْ وَأَرْجُلَكُمْ إِلَى الْكَعْبَيْنِ﴾ (المائدة 6).',
+    'فروض الوضوء ستة: غسل الوجه (ومنه المضمضة والاستنشاق)، وغسل اليدين إلى المرفقين، ومسح الرأس كله (ومنه الأذنان)، وغسل الرجلين إلى الكعبين، والترتيب، والموالاة. ودليل الترتيب قوله ﷺ: «ابدأوا بما بدأ الله به». ودليل الموالاة حديث الرجل الذي رأى النبي ﷺ في قدمه لمعة قدر الدرهم لم يصبها الماء، فأمره بالإعادة (رواه مسلم وأبو داود).',
+    'وشروط الوضوء عشرة: الإسلام، والعقل، والتمييز، والنية، واستصحاب حكمها بألا ينوي قطعها، وانقطاع موجب الحدث، والاستنجاء أو الاستجمار قبله (والاستجمار بثلاثة أحجار فأكثر مع إنقاء المحل)، وطهورية الماء، وإباحته، وإزالة ما يمنع وصول الماء إلى البشرة. ويتوضأ لوقت كل صلاة من حدثه دائم كالمستحاضة.',
+    'وواجبه التسمية: قال الشيخ ابن باز: الجمهور على أنها سنة، وقال بعضهم تجب، والأحوط أن يسمي، ومن نسيها فلا شيء عليه.'
+  ]],
+  ['نواقض الوضوء',[
+    'ذكر الإمام محمد بن عبد الوهاب ثمانية نواقض على طريقة الحنابلة: الخارج من السبيلين، والخارج الفاحش النجس من الجسد، وزوال العقل، ومسّ المرأة بشهوة، ومسّ الفرج باليد، وأكل لحم الجزور، وتغسيل الميت، والردة.',
+    'وقال الشيخ ابن باز في تعليقه: أربعة منها واضحة الدليل، وهي الخارج من السبيلين، وزوال العقل بنوم أو سُكر أو مرض، ومسّ الفرج باليد، وأكل لحم الجزور. وأربعة فيها خلاف بين العلماء، وهي الخارج الفاحش النجس من الجسد، ومسّ المرأة بشهوة (ورجّح أنه لا ينقض)، وتغسيل الميت، والردة.'
+  ]],
+  ['أركان الصلاة الأربعة عشر',[
+    'قال الإمام محمد بن عبد الوهاب: أركان الصلاة أربعة عشر: القيام مع القدرة، وتكبيرة الإحرام، وقراءة الفاتحة، والركوع، والرفع منه، والسجود على الأعضاء السبعة، والاعتدال منه، والجلسة بين السجدتين، والطمأنينة في جميع الأركان، والترتيب، والتشهد الأخير، والجلوس له، والصلاة على النبي ﷺ، والتسليمتان.',
+    'وبيّن الشيخ ابن باز أن الركن لا يسقط لا عمداً ولا سهواً، ولا بد من الإتيان به. وأصل الأركان قوله ﷺ: «صلوا كما رأيتموني أصلي»، وحديث المسيء صلاته المتفق عليه، فقد علّمه النبي ﷺ التكبير وقراءة ما تيسر ثم الركوع والرفع والسجود والجلوس بطمأنينة في كل ذلك.',
+    'وفي الصلاة على النبي ﷺ والتسليمتين قال الشيخ ابن باز: التشهد الأخير مع الصلاة على النبي ﷺ ركن على الراجح، وأرجح الأقوال أن التسليمتين ركن، وإن كان الجمهور يرون الركن التسليمة الأولى.'
+  ]],
+  ['واجبات الصلاة الثمانية',[
+    'جميع التكبيرات غير تكبيرة الإحرام، وقول «سبحان ربي العظيم» في الركوع، وقول «سمع الله لمن حمده» للإمام والمنفرد، وقول «ربنا ولك الحمد»، وقول «سبحان ربي الأعلى» في السجود، وقول «رب اغفر لي» بين السجدتين، والتشهد الأول، والجلوس له.',
+    'وقال الإمام محمد بن عبد الوهاب: ما سقط منها عمداً بطلت الصلاة، وما سقط سهواً جبره سجود السهو.'
+  ]],
+  ['المصدر',['رسالة «شروط الصلاة وأركانها وواجباتها» للإمام محمد بن عبد الوهاب رحمه الله، بتعليق الشيخ عبد العزيز بن باز رحمه الله (موقع الشيخ ابن باز: binbaz.org.sa، قسم شروح الكتب). وقد نسبت كل حكم فيها لقائله، وما كان فيه خلاف نبّهت عليه. فارجع إلى أهل العلم فيما يُشكل عليك.']]
+  ]);
+}
+document.getElementById('kSalah').addEventListener('click',openSalah);
+
+function openMessage(){
+  knowSheet('شعار التطبيق ورسالة إليك',[
+  ['الحديث',[
+    'قال النبي ﷺ: «مَنْ خَافَ أَدْلَجَ، وَمَنْ أَدْلَجَ بَلَغَ الْمَنْزِلَ، أَلَا إِنَّ سِلْعَةَ اللَّهِ غَالِيَةٌ، أَلَا إِنَّ سِلْعَةَ اللَّهِ الْجَنَّةُ».'
+  ]],
+  ['شرح الحديث',[
+    'كان النبي ﷺ يحثّ أصحابه كثيراً على الاستعداد للآخرة والتشمير لبلوغ الجنة.',
+    'ومعنى «من خاف أدلج»: من خاف ألا يصل إلى مقصده سار في الليل ليدركه، و«من أدلج بلغ المنزل»: أي من سار وصل إلى غايته. والمراد بذلك أمر الآخرة: فمن شمّر واجتهد في عبادة الله وأدّى ما عليه من الحقوق والواجبات، كان أرجى له أن يبلغ مغفرة الله ورحمته والفوز بجنته.',
+    'و«سلعة الله غالية»: أي أن ما عند الله عظيم القدر لا ينال إلا بالجد والاجتهاد. و«سلعة الله الجنة»: فمن أرادها فلا بد له من السعي، فالجنة لا تنال بالأماني بل بالعمل، ثم لا يدخلها أحد إلا برحمة الله تعالى.'
+  ]],
+  ['رسالة إلى مستخدم هذا التطبيق',[
+    'لا تظن أن هذا الجدول هو الذي يعينك على طاعة الله، فاستعن بالله دائماً وأبداً. وإنما هو اجتهاد وأخذ بقول النبي ﷺ في الحديث السابق.'
+  ]],
+  ['أولاً: استعن بالله',[
+    'فهذه وصية رسول الله ﷺ لمعاذ رضي الله عنه، فقال له: «والله إني لأحبك، فلا تدعنّ في دبر كل صلاة أن تقول: اللهم أعني على ذكرك وشكرك وحسن عبادتك».',
+    '«اللَّهُمَّ أَعِنِّي عَلَىٰ ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ»'
+  ]],
+  ['ثانياً: اجتهد ما استطعت',[
+    'فإن قصّرت فحاسب نفسك ولا تحزن، وتذكّر أن الله يحب التوابين ويحب المتطهرين: ﴿إِنَّ اللَّهَ يُحِبُّ التَّوَّابِينَ وَيُحِبُّ الْمُتَطَهِّرِينَ﴾ (البقرة 222).'
+  ]],
+  ['ثالثاً: إذا وفّقك الله فلا تغترّ',[
+    'إذا وفقك الله لعبادته فانتبه أن تغتر بأعمالك فتقول كما قال قارون: ﴿إِنَّمَا أُوتِيتُهُ عَلَىٰ عِلْمٍ عِندِي﴾ (القصص 78). ولكن تواضع لله، وقل كما قال سليمان عليه السلام: ﴿رَبِّ أَوْزِعْنِي أَنْ أَشْكُرَ نِعْمَتَكَ الَّتِي أَنْعَمْتَ عَلَيَّ وَعَلَىٰ وَالِدَيَّ وَأَنْ أَعْمَلَ صَالِحًا تَرْضَاهُ وَأَدْخِلْنِي بِرَحْمَتِكَ فِي عِبَادِكَ الصَّالِحِينَ﴾ (النمل 19).',
+    'وانسب الفضل لله، واعلم يقيناً أن ما أنت فيه من الخير والصلاح إنما هو من عند الله: ﴿وَمَا بِكُم مِّن نِّعْمَةٍ فَمِنَ اللَّهِ﴾ (النحل 53). فالحمد لله دائماً وأبداً.'
+  ]],
+  ['',[ 'وفّقني الله وإياكم لكل خير ❤️' ]],
+  ['المصدر',['الحديث رواه الترمذي وصححه الألباني، ووصية معاذ رواها أبو داود والنسائي وصححها الألباني. والشرح بتصرف من كلام أهل العلم في شرح الحديث.']]
+  ]);
+}
+document.getElementById('slogan').addEventListener('click',openMessage);
+try{
+  if(!localStorage.getItem('goodlife_msg_seen')){
+    localStorage.setItem('goodlife_msg_seen','1');
+    setTimeout(openMessage,600);
+  }
+}catch(e){}
 
 load();ensureSel();render();initPrayer();updateInstallUI();
 </script>
